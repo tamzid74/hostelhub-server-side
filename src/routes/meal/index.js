@@ -9,3 +9,8 @@ router.post("/health/meals", async (req, res) => {
 });
 
 module.exports = router;
+
+router.get("/health/meals", async (req, res) => {
+  const result = await Meal.find();
+  res.send(result);
+});

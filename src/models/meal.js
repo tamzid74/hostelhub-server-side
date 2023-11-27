@@ -29,6 +29,10 @@ const mealSchema = new Schema({
     type: Number,
     required: true,
   },
+  reviews: {
+    type: Number,
+    required: true,
+  },
   mealCategory: {
     type: String,
     required: true,
@@ -42,7 +46,7 @@ const mealSchema = new Schema({
     required: true,
   },
   date: {
-    type: Date,
+    type: String,
     required: true,
   },
 });

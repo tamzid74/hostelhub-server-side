@@ -23,9 +23,14 @@ const upComingMealSchema = new Schema({
   },
   likes: {
     type: Number,
+    default: 0,
     required: true,
   },
   rating: {
+    type: Number,
+    required: true,
+  },
+  reviews: {
     type: Number,
     required: true,
   },

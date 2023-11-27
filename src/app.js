@@ -6,6 +6,7 @@ const userRouter = require("./routes/userRouter");
 const adminRouter = require("./routes/admin");
 const mealRouter = require("./routes/meal");
 const upComingMealRouter = require("./routes/upComingMeal");
+const mealRequestRouter = require("./routes/mealRequest");
 const globalErrorHandler = require("./utils/globalErrorHandler");
 require("dotenv").config();
 const app = express();
@@ -18,6 +19,7 @@ app.use(userRouter);
 app.use(adminRouter);
 app.use(mealRouter);
 app.use(upComingMealRouter);
+app.use(mealRequestRouter);
 
 app.get("/health", (req, res) => {
   res.send("welcome to hostelHub......");

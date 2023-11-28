@@ -13,6 +13,14 @@ const mealRequestSchema = new Schema({
     type: String,
     required: true,
   },
+  like: {
+    type: Number,
+    required: true,
+  },
+  review: {
+    type: Number,
+    required: true,
+  },
   Status: {
     type: String,
     enum:['pending','delivered'],

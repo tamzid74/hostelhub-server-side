@@ -7,7 +7,9 @@ const adminRouter = require("./routes/admin");
 const mealRouter = require("./routes/meal");
 const upComingMealRouter = require("./routes/upComingMeal");
 const mealRequestRouter = require("./routes/mealRequest");
+const ReviewRouter =require("./routes/reviews")
 const globalErrorHandler = require("./utils/globalErrorHandler");
+const Review = require("./models/reviews");
 require("dotenv").config();
 const app = express();
 const port = process.env.port || 5000;
@@ -20,6 +22,7 @@ app.use(adminRouter);
 app.use(mealRouter);
 app.use(upComingMealRouter);
 app.use(mealRequestRouter);
+app.use(ReviewRouter)
 
 app.get("/health", (req, res) => {
   res.send("welcome to hostelHub......");

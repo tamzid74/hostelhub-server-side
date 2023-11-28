@@ -13,7 +13,7 @@ const upComingMealSchema = new Schema({
     type: String,
     required: true,
   },
-  distributor_Email: {
+  email: {
     type: String,
     required: true,
   },

@@ -19,7 +19,15 @@ router.post("/health/users", async (req, res) => {
 });
 
 router.get("/health/users", async (req, res) => {
-  const result = await User.find();
+  const { search } = req.query;
+  const searchString = String(search);
+  const query = {
+    $or: [
+      { name: { $regex: searchString, $options: "i" } },
+      { email: { $regex: searchString, $options: "i" } },
+    ],
+  };
+  const result = await User.find(query);
   res.send(result);
 });
 
@@ -29,7 +37,5 @@ router.delete("/health/user/:id", async (req, res) => {
   const result = await User.deleteOne(query);
   res.send(result);
 });
-
-
 
 module.exports = router;

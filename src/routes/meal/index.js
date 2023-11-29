@@ -16,7 +16,7 @@ router.get("/health/allMeals", async (req, res) => {
 });
 
 router.get("/health/meals", async (req, res) => {
-  const { search, category, sort} = req.query;
+  const { search, category, sort } = req.query;
   const query = {
     mealTitle: { $regex: search, $options: "i" },
     mealCategory: category ? category : { $exists: true },
@@ -76,4 +76,15 @@ router.get("/health/meal", async (req, res) => {
   }
   const result = await Meal.find(query);
   res.send(result);
+});
+
+router.patch("/health/meal/:id", async (req, res) => {
+  const id = req.params.id;
+  const { likes } = req.body;
+  const updateMeal = await Meal.findByIdAndUpdate(
+    id,
+    { $set: { likes } },
+    { new: true }
+  );
+  res.send(updateMeal);
 });

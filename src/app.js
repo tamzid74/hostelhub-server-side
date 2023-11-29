@@ -8,6 +8,8 @@ const mealRouter = require("./routes/meal");
 const upComingMealRouter = require("./routes/upComingMeal");
 const mealRequestRouter = require("./routes/mealRequest");
 const ReviewRouter =require("./routes/reviews")
+const mealPackageRouter =require("./routes/membership")
+const paymentRouter = require('./routes/payment')
 const globalErrorHandler = require("./utils/globalErrorHandler");
 const Review = require("./models/reviews");
 require("dotenv").config();
@@ -22,7 +24,9 @@ app.use(adminRouter);
 app.use(mealRouter);
 app.use(upComingMealRouter);
 app.use(mealRequestRouter);
-app.use(ReviewRouter)
+app.use(ReviewRouter);
+app.use(mealPackageRouter);
+app.use(paymentRouter)
 
 app.get("/health", (req, res) => {
   res.send("welcome to hostelHub......");

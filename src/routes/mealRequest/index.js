@@ -26,6 +26,14 @@ router.get("/health/mealRequests", async (req, res) => {
   const result = await MealRequest.find();
   res.send(result);
 });
+router.get("/health/mealRequest", async (req, res) => {
+  let query = {};
+  if (req.query?.email) {
+    query = { email: req.query.email };
+  }
+  const result = await MealRequest.find(query);
+  res.send(result);
+});
 
 router.patch("/health/meal-requests/:id", async (req, res) => {
   const { id } = req.params;

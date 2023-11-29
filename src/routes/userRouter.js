@@ -18,6 +18,15 @@ router.post("/health/users", async (req, res) => {
   res.send(result);
 });
 
+router.get("/health/user", async (req, res) => {
+  let query = {};
+  if (req.query?.email) {
+    query = { email: req.query.email };
+  }
+  const result = await User.find(query);
+  res.send(result);
+});
+
 router.get("/health/users", async (req, res) => {
   const { search } = req.query;
   const searchString = String(search);

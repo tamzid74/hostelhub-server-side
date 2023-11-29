@@ -1,11 +1,15 @@
 const { model, Schema } = require("mongoose");
 
 const ReviewSchema = new Schema({
+  mealId: {
+    type: String,
+    required: true,
+  },
   meal: {
     type: String,
     required: true,
   },
-  user_email: {
+  email: {
     type: String,
     required: true,
   },
@@ -23,16 +27,21 @@ const ReviewSchema = new Schema({
     type: String,
     required: true,
   },
+  pic: {
+    type: String,
+    required: true,
+  },
   description: {
     type: String,
     required: true,
   },
   date: {
-    type: String,
+    type: Date,
     required: true,
   },
-  reviewCount: {
+  reviews: {
     type: Number,
+    default: 0,
     required: true,
   },
   like: {

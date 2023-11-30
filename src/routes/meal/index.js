@@ -1,11 +1,18 @@
 const Meal = require("../../models/meal");
 
+
 const router = require("express").Router();
 
 router.post("/health/meals", async (req, res) => {
   const meal = req.body;
   const result = await Meal.insertMany(meal);
   res.send(result);
+});
+router.post("/health/publish-meal", async (req, res) => {
+  const data = req.body;
+  console.log(data);
+  const meal = await Meal.insertMany(data);
+  res.send(meal);
 });
 
 module.exports = router;
@@ -83,7 +90,8 @@ router.patch("/health/meal/:id", async (req, res) => {
   const { likes } = req.body;
   const updateMeal = await Meal.findByIdAndUpdate(
     id,
-    { $set: { likes } },
+    // { $set: { likes } }
+    { $inc: { likes: 1 } },
     { new: true }
   );
   res.send(updateMeal);
